@@ -37,9 +37,11 @@ class ClassTeachers(models.Model):
 class askclass(forms.Form):
     level = forms.CharField(label="Class")
     arm = forms.CharField(label="arm", max_length=1)
+
+# view to add new class
+ct1=ClassTeachers.objects.all()
+ct=Teachers.objects.exclude(name__in=[n for n in ct1])
 class getclass(forms.Form):
-    ct1=ClassTeachers.objects.all()
-    ct=Teachers.objects.exclude(name__in=[n for n in ct1])
     ce = (('','Choose'),)
     for i in range(len(ct)):
         ce+=((ct[i],ct[i]),)
