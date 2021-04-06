@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar bg-info">
+      <div class="navbar-nav">
+          <ul class="row nav-list list-unstyled">
+            <li class=" col-3 offset-1 nav-item"><select class="pl-2 mr-5" name="loginpage">
+              <option value="#">LOGIN</option>
+              <option value="#">SIGN UP</option>
+            </select></li>
+            <li class="col-5 offset-3 nav-item">KOSO COMMUNITY GRAMMAR SCHOOL DATABASE</li>
+      </div>
+</nav>
+<div class="jumbotron bg-light pt-2">
+  <div class="jumbotron-body">
+    <div class="container">
+      <div class="row">
+      <div class="col-3 active"><a href="{%url 'index'%}">Home</a></div>
+      <div class="col-3 mr-0"><a href="{%url 'aboutus'%}">About Us</a></div>
+      <div class="col-3 mr-0"><a href="#">Contact</div>
+  </div>
+  </div>
+</div>
+
+</div>
+    <div class="container pd-2 mt-4 bg-light">
+      <div class="row offset-2">
+        <div class="col-12 col-sm-3 ">
+          <button type="button"><a href="{%url 'askpage'%}"><h1>
+            Check Student Details
+          </h1></a></button>
+        </div>
+        <div class="col-12 col-sm-3">
+          <button type="button"><a href="{%url 'askteacher'%}"><h1>
+            Check Teacher Details
+          </h1></a></button>
+        </div>
+        <div class="col-12  col-sm-3">
+          <button type="button"><a href="{%url 'askclass'%}"><h1>
+            Check Class Details
+          </h1></a></button>
+        </div>
+      </div>
+      <div class="container mt-5 bg-light">
+        <div class="row offset-2">
+          <div class="col-12  col-sm-3 ">
+            <button type="button"><a href="{%url 'addstudentdetails'%}"><h1>
+              Add Student
+            </h1></a></button>
+          </div>
+          <div class="col-12  col-sm-3">
+            <button type="button"><a href="getteacher"><h1>
+               Add Teacher
+            </h1></a></button>
+          </div>
+          <div class="col-12  col-sm align-self-center">
+            <button type="button"><a href="{%url 'getclass'%}"><h1>
+              Add Class
+            </h1></a></button>
+          </div>
+        </div>
+
+      </div>
+      </div>
+      <div class="container mt-5 bg-light">
+        <div class="row">
+          <div class="col-12 offset-4 col-sm-7 ">
+            <button type="button"><a href="{%url 'classteacherlist'%}"><h1>
+              ClassTeachers List
+            </h1></a></button>
+          </div>
+          </div></div>
+    </body>
+</html>

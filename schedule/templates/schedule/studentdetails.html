@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="offset-2">
+      {%if student%}
+      {%for st in student%}
+      <h1>Student {{st.adm_number}}</h1><hr>
+      <h2>Details:</h2>
+      <h3>Surname : {{st.surname}}</h3>
+      <h3>Other Names : {{st.othernames}}</h3>
+      <h3>Class : {{st.presentclass.level}} {{st.presentclass.arm}}</h3>
+      <h3>Classteacher : {{st.cl_teacher.classteacher.name}}</h3>
+      <a href="{%url 'rmvstudent' st.pk %}" class=" btn btn-danger">Delete student</a><br>
+      {%endfor%}
+      {%endif%}
+      <a href ="{%url '/'%}">Back to Homepage</a>
+    </div>
+  </body>
+</html>
