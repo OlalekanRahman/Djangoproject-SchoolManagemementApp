@@ -5,7 +5,7 @@
       <h1>List of current Classteachers</h1><hr>
       <ul class="list-unstyled">
       {%for object in object_list%}
-      <li><h3> {{object.name.name}} ({{object.name.title}}) {{object.classteacher.level}} {{object.classteacher.arm}} </h3></li>
+      <li><h3> {{object.name.name}} ({{object.name.title}}) {{object.name.staffID}} </h3></li>
       <a href="{%url 'rmvclassteacher' object.id%}"><button type="button" class="btn btn-warning">RemoveAsClassteacher</button></a><br>
     </ul>
       {%endfor%}

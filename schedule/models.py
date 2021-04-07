@@ -66,7 +66,7 @@ class Classes(models.Model):
     level=models.CharField(max_length=4)
     arm = models.CharField(max_length=1)
     no_of_students=models.IntegerField()
-    classteacher=models.OneToOneField(ClassTeachers, null=True,on_delete=models.SET_NULL)
+    classteacher=models.OneToOneField(ClassTeachers, null=True,on_delete=models.SET_NULL, related_name="_class")
     def __str__(self):
         return " %s %s "%(self.level,self.arm)
 
