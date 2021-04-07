@@ -10,7 +10,15 @@
       <h3>Class Number of students : {{pclass.no_of_students}}</h3>
       <a href="{%url 'rmvclass' pclass.pk %}">
         <input type = "submit" value = "Delete" class = " btn btn-danger">
-      </a><br>
+      </a><br><br>
+      <h1>Student(s) in the Class:</h1><hr><br>
+      {%endif%}
+      {%if s%}
+      {%for c in s%}
+      <h3>{{c.surname}} {{c.othernames}}  {{c.adm_number}}<h3>
+        {%endfor%}
+        {%else%}
+        <h3>No student for now</h3>
       {%endif%}
       <a href ="{%url 'index'%}">Back to Homepage</a>
     </div>

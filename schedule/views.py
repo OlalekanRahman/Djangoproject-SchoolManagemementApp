@@ -107,7 +107,8 @@ class SchoolSchedules(View):
                     level = form.cleaned_data['level']
                     arm = form.cleaned_data['arm']
                     presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
-                    return render(request,"schedule/classdetails.html",{"pclass":presentclass})
+                    studentsinclass=Students.objects.filter(presentclass=presentclass)
+                    return render(request,"schedule/classdetails.html",{"pclass":presentclass,'s':studentsinclass})
                 except:
                     return HttpResponseRedirect(reverse('index'))
 #View to get data of new teacher
