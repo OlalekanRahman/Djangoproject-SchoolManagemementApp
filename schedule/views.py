@@ -92,7 +92,7 @@ class SchoolSchedules(View):
                     nclass = Classes.objects.create(level = level,arm  = arm, no_of_students = no_of_students,
                     classteacher = clteacher)
                     nclass.save()
-                    return HttpResponse('''<h1>Class added successfully!''')
+                    return HttpResponse('''<h1>Class added successfully!</h1>''')
             #return HttpResponseRedirect(reverse('index'))
     def rmvclass(request,pk):
         cl=Classes.objects.get(pk=pk)
@@ -100,17 +100,20 @@ class SchoolSchedules(View):
         return HttpResponse('''<h1>Class deleted! <a href="{%url 'index'%}">Home</a></h1>''')
 #View to see class details
     def classdetails(request):
+        import pandas as pd
         if request.method == "POST":
             form = askclass(request.POST)
             if form.is_valid():
-                try:
-                    level = form.cleaned_data['level']
-                    arm = form.cleaned_data['arm']
-                    presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
-                    studentsinclass=Students.objects.filter(presentclass=presentclass)
-                    return render(request,"schedule/classdetails.html",{"pclass":presentclass,'s':studentsinclass})
-                except:
-                    return HttpResponseRedirect(reverse('index'))
+                level = form.cleaned_data['level']
+                arm = form.cleaned_data['arm']
+                presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
+                studentsinclass=Students.objects.filter(presentclass=presentclass)
+                student_df = pd.DataFrame(studentsinclass.values())
+                student_df = student_df[['surname','othernames','adm_number','DOB']]
+                student_df.columns = ['Surname','Othernames','Adm_No','DOB']
+                context = {"pclass":presentclass,'s':studentsinclass,'df':student_df.to_html()}
+                return render(request,"schedule/classdetails.html",context)
+                #return HttpResponseRedirect(reverse('index'))
 #View to get data of new teacher
     def getteacher(request):
         form = getteacher()
