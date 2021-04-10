@@ -106,14 +106,16 @@ class SchoolSchedules(View):
             if form.is_valid():
                 level = form.cleaned_data['level']
                 arm = form.cleaned_data['arm']
-                presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
-                studentsinclass=Students.objects.filter(presentclass=presentclass)
-                student_df = pd.DataFrame(studentsinclass.values())
-                student_df = student_df[['surname','othernames','adm_number','DOB']]
-                student_df.columns = ['Surname','Othernames','Adm_No','DOB']
-                context = {"pclass":presentclass,'s':studentsinclass,'df':student_df.to_html()}
-                return render(request,"schedule/classdetails.html",context)
-                #return HttpResponseRedirect(reverse('index'))
+                try:
+                    presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
+                    studentsinclass=Students.objects.filter(presentclass=presentclass)
+                    student_df = pd.DataFrame(studentsinclass.values())
+                    student_df = student_df[['surname','othernames','adm_number','DOB']]
+                    student_df.columns = ['Surname','Othernames','Adm_No','DOB']
+                    context = {"pclass":presentclass,'s':studentsinclass,'df':student_df.to_html()}
+                    return render(request,"schedule/classdetails.html",context)
+                except:
+                    return HttpResponseRedirect(reverse('index'))
 #View to get data of new teacher
     def getteacher(request):
         form = getteacher()
