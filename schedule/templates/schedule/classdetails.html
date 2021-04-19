@@ -13,11 +13,10 @@
       </a><br><br>
       <h1>Student(s) in the Class:</h1><hr><br>
       {%endif%}
-      <div class="container-fluid offset-2">
+      <div class="container offset-2">
         {{df|safe}}
       </div><br>
-      <a class="btn btn-primary offset -3" href ="{%url 'index'%}">Back to Homepage</a>
+      <a class="btn btn-primary offset -3" href ="{%url 'schedule_index'%}">Back to Homepage</a>
     </div>
     <br>
     {%endblock%}
-</html>

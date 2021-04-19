@@ -18,9 +18,11 @@
   <div class="jumbotron-body">
     <div class="container">
       <div class="row">
-      <div class="col-12 col-md-3 active"><a href="{%url 'schedule_index'%}">Home</a></div>
+
       <div class="col-3 mr-0"><a href="{%url 'aboutus'%}">About Us</a></div>
       <div class="col-3 mr-0"><a href="#">Contact</a></div>
+      {%block logout%}
+      {%endblock%}
   </div>
   </div>
 </div>

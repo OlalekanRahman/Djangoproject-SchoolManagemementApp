@@ -1,0 +1,18 @@
+{%extends 'loginapp/base.html'%}
+{%block logout%}
+<div class="col-12 col-md-3 active"><a href="{%url 'register'%}">New User</a></div>
+{%endblock%}
+{%block body%}
+<div class="container mt-5">
+  {%if msg%}
+  <h1>{{msg}}</h1>
+{% endif %}
+<div class="mb-2"> Login</div>
+<form class="form-group" action="{%url 'login'%}" method="post">
+  {%csrf_token%}
+  <input type="text" name="username" placeholder="username" class="mb-2 form-control">
+  <input type="password" name="password" placeholder="password" class=" mb-2 form-control">
+  <input type="submit" name="" value="Submit">
+</form>
+</div>
+{%endblock%}

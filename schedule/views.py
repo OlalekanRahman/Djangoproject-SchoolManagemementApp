@@ -101,6 +101,7 @@ class SchoolSchedules(View):
 #View to see class details
     def classdetails(request):
         import pandas as pd
+
         if request.method == "POST":
             form = askclass(request.POST)
             if form.is_valid():
@@ -109,7 +110,8 @@ class SchoolSchedules(View):
                 try:
                     presentclass= Classes.objects.get(level__iexact=level, arm__iexact=arm)
                     studentsinclass=Students.objects.filter(presentclass=presentclass)
-                    student_df = pd.DataFrame(studentsinclass.values())
+                    student_df = pd.DataFrame(data=studentsinclass.values())
+                    pd.set_option('display.max_colwidth', 40)
                     student_df = student_df[['surname','othernames','adm_number','DOB']]
                     student_df.columns = ['Surname','Othernames','Adm_No','DOB']
                     context = {"pclass":presentclass,'s':studentsinclass,'df':student_df.to_html()}

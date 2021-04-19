@@ -1,0 +1,9 @@
+{%extends 'loginapp/base.html'%}
+{%block body%}
+<div class="container mt-5"
+{%if msg%}
+{{msg}}
+{%endif%}
+<h2>Goodbye! {{request.user.username}} <a href="{%url 'login'%}">login</a</h2>
+  </div>
+{%endblock%}
